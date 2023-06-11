@@ -2,7 +2,7 @@
 #
 # This script launches nginx and OIDC module.
 #
-echo "------ version 2023.02.22.07 ------"
+echo "------ version 2023.06.11.1 ------"
 
 install_path="/nginx"
 
@@ -17,7 +17,7 @@ trap 'handle_term' TERM
 
 # Launch nginx
 echo "starting nginx ..."
-${install_path}/usr/sbin/nginx -p ${install_path}/etc/nginx -c ${install_path}/etc/nginx/nginx.conf -g "daemon off; load_module modules/ngx_http_js_module.so;" &
+${install_path}/usr/sbin/nginx -p ${install_path}/etc/nginx -c ${install_path}/etc/nginx/nginx.conf -g "daemon off;" &
 
 nginx_pid=$!
 
