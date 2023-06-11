@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim as nginx-installer
+FROM debian:bullseye as nginx-installer
 
 LABEL maintainer="F5 SE"
 
