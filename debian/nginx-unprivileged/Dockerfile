@@ -85,7 +85,7 @@ RUN --mount=type=secret,id=nginx-crt,dst=nginx-repo.crt \
 # Download and Install NAP-DOS \
   # Add NGINX App Protect DoS repository:
     && printf "deb https://pkgs.nginx.com/plus/debian `lsb_release -cs` nginx-plus\n" | tee /etc/apt/sources.list.d/nginx-plus.list \
-    && printf "deb https://pkgs.nginx.com/app-protect-dos/ubuntu `lsb_release -cs` nginx-plus\n" | tee /etc/apt/sources.list.d/nginx-app-protect-dos.list \
+    && printf "deb https://pkgs.nginx.com/app-protect-dos/debian `lsb_release -cs` nginx-plus\n" | tee /etc/apt/sources.list.d/nginx-app-protect-dos.list \
   # Download the apt configuration to `/etc/apt/apt.conf.d`:
     && wget -P /etc/apt/apt.conf.d https://cs.nginx.com/static/files/90nginx \
   # Update the repository and install the most recent version of the NGINX App Protect DoS and NGINX App Protect package (which includes NGINX Plus):
