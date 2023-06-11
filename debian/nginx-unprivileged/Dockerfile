@@ -5,7 +5,6 @@ LABEL maintainer="F5 SE"
 # Define NGINX versions for NGINX Plus and NGINX Plus modules
 ARG NGINX_PLUS_VERSION=29
 ARG NGINX_PLUS_VERSION_MINOR=1
-ARG NJS_VERSION="0.7.10"
 ARG INSTALL_PATH="/nginx"
 ARG TMP_PATH="/nginx-tmp"
 ARG CACHE_PATH="/nginx-cache"
@@ -85,6 +84,7 @@ RUN --mount=type=secret,id=nginx-crt,dst=nginx-repo.crt \
     \
 # Download and Install NAP-DOS \
   # Add NGINX App Protect DoS repository:
+    && printf "deb https://pkgs.nginx.com/plus/debian `lsb_release -cs` nginx-plus\n" | tee /etc/apt/sources.list.d/nginx-plus.list \
     && printf "deb https://pkgs.nginx.com/app-protect-dos/ubuntu `lsb_release -cs` nginx-plus\n" | tee /etc/apt/sources.list.d/nginx-app-protect-dos.list \
   # Download the apt configuration to `/etc/apt/apt.conf.d`:
     && wget -P /etc/apt/apt.conf.d https://cs.nginx.com/static/files/90nginx \
