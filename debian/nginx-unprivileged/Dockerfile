@@ -106,7 +106,9 @@ RUN sed -i "/user  nginx;/d" ${INSTALL_PATH}/etc/nginx/nginx.conf \
     && sed -i "s,client_body_temp_path.*,client_body_temp_path ${CACHE_PATH}/client_temp;," ${INSTALL_PATH}/etc/nginx/nginx.conf \
     && sed -i "s,fastcgi_temp_path.*,fastcgi_temp_path ${CACHE_PATH}/fastcgi_temp;," ${INSTALL_PATH}/etc/nginx/nginx.conf \
     && sed -i "s,uwsgi_temp_path.*,uwsgi_temp_path ${CACHE_PATH}/uwsgi_temp;," ${INSTALL_PATH}/etc/nginx/nginx.conf \
-    && sed -i "s,scgi_temp_path.*,scgi_temp_path ${CACHE_PATH}/scgi_temp;," ${INSTALL_PATH}/etc/nginx/nginx.conf
+    && sed -i "s,scgi_temp_path.*,scgi_temp_path ${CACHE_PATH}/scgi_temp;," ${INSTALL_PATH}/etc/nginx/nginx.conf \
+    # NAP DOS Dashboard
+    && cp /usr/share/nginx/html/dashboard-dos.html /nginx/usr/share/nginx/html/
 
 FROM nginx-config-update as cleaner
 # cleanup sensitive nginx-plus data
