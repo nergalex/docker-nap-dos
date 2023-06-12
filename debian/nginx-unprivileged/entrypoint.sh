@@ -2,8 +2,13 @@
 #
 # This script launches nginx and OIDC module.
 #
-echo "------ version 2023.06.11.1 ------"
+echo "------ version 2023.06.12.1 ------"
 
+# Run nap-dos
+/usr/bin/adminstall
+/usr/bin/admd -d --log info &
+
+# Run NGINX
 install_path="/nginx"
 
 handle_term()
