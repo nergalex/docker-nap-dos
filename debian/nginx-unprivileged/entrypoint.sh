@@ -2,9 +2,10 @@
 #
 # This script launches nginx and OIDC module.
 #
-echo "------ version 2023.06.12.1 ------"
+echo "------ version 2023.06.12.2 ------"
 
 # Run nap-dos
+cp /usr/share/nginx/html/dashboard-dos.html /nginx/usr/share/nginx/html/
 /usr/bin/adminstall
 /usr/bin/admd -d --log info &
 
