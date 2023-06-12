@@ -125,6 +125,7 @@ RUN ln -sf /dev/stdout ${INSTALL_PATH}/var/log/nginx/access.log \
 COPY entrypoint.sh /
 
 EXPOSE 8080
+EXPOSE 8090
 EXPOSE 4443
 STOPSIGNAL SIGTERM
 USER nginx
