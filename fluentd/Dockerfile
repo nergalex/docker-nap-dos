@@ -58,14 +58,14 @@ RUN groupadd -r fluent && useradd -r -g fluent fluent \
 
 
 COPY fluent.conf /fluentd/etc/
-COPY entrypoint.sh /bin/
+COPY entrypoint.sh /
 
 
 ENV FLUENTD_CONF="fluent.conf"
 
 ENV LD_PRELOAD="/usr/lib/libjemalloc.so.2"
-EXPOSE 24224 5140
+EXPOSE 24224 5140 5261
 
 USER fluent
-ENTRYPOINT ["tini",  "--", "/bin/entrypoint.sh"]
+ENTRYPOINT ["tini",  "--", "/entrypoint.sh"]
 CMD ["fluentd"]
