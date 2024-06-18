@@ -41,7 +41,7 @@ RUN apt-get update \
  && mv lib/libjemalloc.so.2 /usr/lib \
  # Plugin
  && gem install fluent-plugin-s3 --no-document \
- && apt-get install -y net-tools curl \
+ && apt-get install -y net-tools curl vim \
  && apt-get purge -y --auto-remove \
                   -o APT::AutoRemove::RecommendsImportant=false \
                   $buildDeps \
@@ -59,6 +59,7 @@ RUN groupadd -r fluent && useradd -r -g fluent fluent \
 
 COPY fluent.conf /fluentd/etc/
 COPY entrypoint.sh /
+COPY get-object-s3.sh /
 
 
 ENV FLUENTD_CONF="fluent.conf"
