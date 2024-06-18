@@ -95,8 +95,7 @@ XC
 
 3) DEPLOY as a workload on your XC vK8S
 =========================================
-- Copy-Paste the JSON `here <https://github.com/nergalex/docker-nap-dos/tree/master/fluentd/_xc-objects/workload.json>`_
-as new workload object.
+- Copy-Paste the JSON `here <https://github.com/nergalex/docker-nap-dos/tree/master/fluentd/_xc-objects/workload.json>`_ as new workload object.
 - Modify the **tenant** name et the **private container registry name**
 - Modify the **fluent** configuration as required. An example for a S3 bucket:
 
