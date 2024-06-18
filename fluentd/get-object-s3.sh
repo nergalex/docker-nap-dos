@@ -83,4 +83,4 @@ curl -s https://$1.s3.amazonaws.com/$2 \
   -H "x-amz-content-sha256: $EMPTY_STRING_HASH" \
   -H "x-amz-date: $DATE_AND_TIME" \
   -H "x-amz-security-token: $SESS_TOKEN" \
-  -o "$OUTPUT"
+  -o "$OUTPUT" -vvv
