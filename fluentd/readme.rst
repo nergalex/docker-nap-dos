@@ -154,7 +154,7 @@ Receive messages from NAP DOS gateways
 
 Access to S3 bucket
 =========================================
-- Upload a ``test.txt`` a file on your bucket
+- Upload a ``test.txt`` file on your bucket
 - The output of the command line below will return a 200 http code if the access is OK
 
 .. code-block:: bash
