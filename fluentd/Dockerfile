@@ -41,6 +41,7 @@ RUN apt-get update \
  && mv lib/libjemalloc.so.2 /usr/lib \
  # Plugin
  && gem install fluent-plugin-s3 --no-document \
+ && apt-get install -y net-tools curl \
  && apt-get purge -y --auto-remove \
                   -o APT::AutoRemove::RecommendsImportant=false \
                   $buildDeps \
