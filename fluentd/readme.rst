@@ -12,7 +12,7 @@ to create visibility and alerting to Ops teams.
 
 .. image:: ./_pictures/architecture.png
    :align: center
-   :width: 800
+   :width: 1200
    :alt: Architecture
 
 .. contents:: Contents
