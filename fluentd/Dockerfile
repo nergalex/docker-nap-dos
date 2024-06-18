@@ -40,7 +40,7 @@ RUN apt-get update \
  && (echo "je_cv_madv_free=no" > config.cache) && ./configure -C && make \
  && mv lib/libjemalloc.so.2 /usr/lib \
  # Plugin
- && gem install fluent-plugin-s3 --no-document
+ && gem install fluent-plugin-s3 --no-document \
  && apt-get purge -y --auto-remove \
                   -o APT::AutoRemove::RecommendsImportant=false \
                   $buildDeps \
