@@ -67,5 +67,5 @@ ENV LD_PRELOAD="/usr/lib/libjemalloc.so.2"
 EXPOSE 24224 5140 5261
 
 USER fluent
-ENTRYPOINT ["tini",  "--", "/entrypoint.sh"]
+ENTRYPOINT ["bash", "/entrypoint.sh"]
 CMD ["fluentd"]
