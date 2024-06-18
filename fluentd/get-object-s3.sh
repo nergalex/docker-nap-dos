@@ -2,14 +2,12 @@
 
 if [[ $# -lt 2 ]]; then
   echo "Error: Missing required argument"
+  echo "export KEY_ID=XXX"
+  echo "export SEC_KEY=XXX"
+  echo "export SESS_TOKEN=XXX"
   echo "Usage: get-object-s3.sh bucket_name object_path"
   exit 1
 fi
-
-# Retreive IAM credentials from EC2 instance metadata
-KEY_ID="XXX"
-SEC_KEY="XXX"
-SESS_TOKEN=""
 
 # Retreive AWS Region name where the instance is launched
 REGION="eu-west-3"
