@@ -1,0 +1,129 @@
+{
+  "metadata": {
+    "name": "nap-dos-fluent",
+    "namespace": "demo",
+    "labels": {
+      "owner": "nergalex",
+      "project": "cloudbuilder",
+      "ves.io/app": "ddos-app-protect",
+      "ves.io/app_type": "ddos-app-protect-analytics-plane"
+    },
+    "annotations": {
+      "ves.io/app": "nap-dos",
+      "ves.io/workload-flavor": "ves-io-medium"
+    },
+    "description": "NAP DOS log management",
+    "disable": false
+  },
+  "spec": {
+    "service": {
+      "num_replicas": 1,
+      "containers": [
+        {
+          "name": "nap-dos-fluent",
+          "image": {
+            "name": "my-acr.azurecr.io/fluent/fluentd:s3",
+            "container_registry": {
+              "tenant": "my-tenant-abcdef",
+              "namespace": "demo",
+              "name": "my-acr-azurecr-io",
+              "kind": "container_registry"
+            },
+            "pull_policy": "IMAGE_PULL_POLICY_IF_NOT_PRESENT"
+          },
+          "init_container": false,
+          "flavor": "CONTAINER_FLAVOR_TYPE_MEDIUM",
+          "command": [],
+          "args": []
+        }
+      ],
+      "volumes": [
+        {
+          "name": "nap-dos-fluent-log",
+          "empty_dir": {
+            "size_limit": 0.1,
+            "mount": {
+              "mode": "VOLUME_MOUNT_READ_WRITE",
+              "mount_path": "/fluentd/log"
+            }
+          }
+        },
+        {
+          "name": "nap-dos-fluent-s3-buffer",
+          "empty_dir": {
+            "size_limit": 0.1,
+            "mount": {
+              "mode": "VOLUME_MOUNT_READ_WRITE",
+              "mount_path": "/var/log/fluent/s3"
+            }
+          }
+        },
+        {
+          "name": "nap-dos-fluent-test",
+          "empty_dir": {
+            "size_limit": 0.001,
+            "mount": {
+              "mode": "VOLUME_MOUNT_READ_WRITE",
+              "mount_path": "/tmp-test"
+            }
+          }
+        }
+      ],
+      "configuration": {
+        "parameters": [
+          {
+            "file": {
+              "name": "fluent.conf",
+              "data": "string:///my+config+in+b64",
+              "volume_name": "fluent-conf",
+              "mount": {
+                "mode": "VOLUME_MOUNT_READ_ONLY",
+                "mount_path": "/fluentd/etc/fluent.conf",
+                "sub_path": "fluent.conf"
+              }
+            }
+          }
+        ]
+      },
+      "deploy_options": {
+        "deploy_re_sites": {
+          "site": [
+            {
+              "tenant": "ves-io",
+              "namespace": "system",
+              "name": "pa2-par",
+              "kind": "site"
+            }
+          ]
+        }
+      },
+      "advertise_options": {
+        "advertise_in_cluster": {
+          "multi_ports": {
+            "ports": [
+              {
+                "name": "syslog-tcp",
+                "info": {
+                  "port": 5261,
+                  "protocol": "PROTOCOL_TCP",
+                  "same_as_port": {}
+                }
+              },
+              {
+                "name": "syslog-udp",
+                "info": {
+                  "port": 5261,
+                  "protocol": "PROTOCOL_UDP",
+                  "same_as_port": {}
+                }
+              }
+            ]
+          }
+        }
+      },
+      "family": {
+        "v4": {}
+      }
+    }
+  }
+}
