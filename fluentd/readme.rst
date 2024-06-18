@@ -2,15 +2,18 @@ XC PaaS App Protect L7 DDoS
 ####################################################################
 
 `NGINX App Protect DoS <https://docs.nginx.com/nginx-app-protect-dos/>`_ gateways
-sends `Security event <https://docs.nginx.com/nginx-app-protect-dos/monitoring/types-of-logs/#security-log>`_ logs
-using TCP protocol.
-`A Fluentd micro service <https://docs.fluentd.org/>`_ to convert Security event logs to different
+send `Security event <https://docs.nginx.com/nginx-app-protect-dos/monitoring/types-of-logs/#security-log>`_ logs
+using TCP protocol. If you need more receivers or different output protocols,
+`a Fluentd micro-service <https://docs.fluentd.org/>`_ will convert Security event logs to different
 `outputs <https://docs.fluentd.org/output>`_, for example a `S3 bucket <https://docs.fluentd.org/output/s3>`_.
+
+The diagram below shows an example of a S3 Bucket as a receiver and Dynatrace as a log consumer
+to create visibility and alerting to Ops teams.
 
 .. image:: ./_pictures/architecture.png
    :align: center
-   :width: 500
-   :alt: Architecture - Transit GW
+   :width: 800
+   :alt: Architecture
 
 .. contents:: Contents
     :local:
